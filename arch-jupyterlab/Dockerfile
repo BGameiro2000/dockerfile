@@ -9,6 +9,7 @@ RUN pacman --noconfirm -Syyu jupyterlab
 
 # Expose port and path
 EXPOSE 8888
+VOLUME /usr/share/jupyter
 RUN mkdir -p /opt/app/data
 
 # TODO: python-ipykernel evcxr_jupyter jupyter-octave_kernel
