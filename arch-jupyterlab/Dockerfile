@@ -13,7 +13,7 @@ RUN mkdir -p /opt/app/data
 
 # Add packages and functionalities
 ENV pkgs=PACKAGES
-CMD pacman --noconfirm -S jupyterlab pkgs
+CMD pacman --noconfirm -S jupyterlab
 
 # Run JupyterLab
 CMD jupyter lab --ip=* --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root
