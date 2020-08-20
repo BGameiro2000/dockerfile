@@ -4,15 +4,15 @@ FROM archlinux:latest
 # Set maintainer
 LABEL maintainer='BGameiro <projects+docker@bgameiro.me>'
 
-# Update and install jupyterlab
-RUN pacman --noconfirm -Syyu jupyterlab
+# Update mirrors and packages
+RUN pacman --noconfirm -Syyu
 
 # Expose port and path
 EXPOSE 8888
-VOLUME /usr/share/jupyter
 RUN mkdir -p /opt/app/data
 
-# TODO: python-ipykernel evcxr_jupyter jupyter-octave_kernel
+# Add packages and functionalities
+CMD pacman --noconfirm -S jupyterlab pkgs
 
 # Run JupyterLab
 CMD jupyter lab --ip=* --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root
