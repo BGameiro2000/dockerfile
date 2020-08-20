@@ -12,7 +12,7 @@ EXPOSE 8888
 RUN mkdir -p /opt/app/data
 
 # Add packages and functionalities
-ENV pkgs=PACKAGES
+# ENV pkgs=PACKAGES
 CMD pacman --noconfirm -S jupyterlab
 
 # Run JupyterLab
