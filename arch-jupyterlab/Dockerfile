@@ -4,8 +4,11 @@ FROM archlinux:latest
 # Set maintainer
 LABEL maintainer='BGameiro <projects+docker@bgameiro.me>'
 
-# Update mirrors and packages
+# Update mirrors and packages. Install jupyterlab
 RUN pacman --noconfirm -Syyu jupyterlab
+
+# Build the lab
+RUN jupyter lab build
 
 # Expose port and path
 EXPOSE 8888
