@@ -9,11 +9,11 @@ RUN pacman --noconfirm -Syyu jupyterlab
 
 # Expose port and path
 EXPOSE 8888
-RUN mkdir -p /opt/app/data
+VOLUME /appdata
 
 # Add packages and functionalities
 # ENV pkgs=PACKAGES
 # CMD pacman --noconfirm -S 
 
 # Run JupyterLab
-CMD jupyter lab --ip=* --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root
+CMD cp -R -n /usr/share/jupyter/* /appdata && jupyter lab --ip=* --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root --config-dir=/appdata || jupyter lab --ip=* --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root --config-dir=/appdata --generate-config
