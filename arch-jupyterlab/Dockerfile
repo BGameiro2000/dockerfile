@@ -8,7 +8,7 @@ LABEL maintainer='BGameiro <projects+docker@bgameiro.me>'
 RUN pacman --noconfirm -Syyu jupyterlab
 
 # Build the lab
-RUN jupyter lab build
+RUN jupyter lab build --minimize=False
 
 # Expose port and path
 EXPOSE 8888
@@ -19,4 +19,4 @@ VOLUME /appdata
 # CMD pacman --noconfirm -S 
 
 # Run JupyterLab
-CMD cp -R -n /usr/share/jupyter/* /appdata && jupyter lab --ip=* --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root --app-dir=/appdata || jupyter lab --ip=* --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root --app-dir=/appdata --generate-config
+CMD cp -R -n /usr/share/jupyter/* /appdata && jupyter lab --ip=* --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root --app-dir=/appdata/lab
