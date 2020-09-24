@@ -12,4 +12,4 @@ EXPOSE 8888
 VOLUME /appdata
 
 # Run root
-CMD cp -R -n /usr/share/cern-root/* /appdata && root --notebook --ip=* --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root --app-dir=/appdata
+CMD mkdir /appdata/cern-root && mkdir /appdata/cern-root && cp -R -n /usr/share/jupyter/* /appdata/jupyter && cp -R -n /usr/share/cern-root/* /appdata/cern-root && root --notebook --ip=* --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root --app-dir=/appdata/jupyter
