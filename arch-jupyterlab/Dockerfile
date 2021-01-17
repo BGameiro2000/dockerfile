@@ -5,7 +5,7 @@ FROM archlinux:latest
 LABEL maintainer='BGameiro <projects+docker@bgameiro.me>'
 
 # Update mirrors and packages. Install jupyterlab
-RUN pacman --noconfirm -Syyu jupyterlab
+RUN pacman --noconfirm -Syyu jupyterlab python-pip
 
 # Build the lab
 RUN jupyter lab build --minimize=False
