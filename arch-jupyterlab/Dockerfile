@@ -7,6 +7,8 @@ LABEL maintainer='BGameiro <projects+docker@bgameiro.me>'
 # Update mirrors and packages. Install jupyterlab
 RUN pacman --noconfirm -Syyu python-pip jupyterlab
 
+ENV JUPYTERLAB_DIR /appdata/lab
+
 # Build the lab
 RUN jupyter lab build --minimize=False
 
@@ -19,4 +21,4 @@ VOLUME /appdata
 # CMD pacman --noconfirm -S 
 
 # Run JupyterLab
-CMD cp -R -n /usr/share/jupyter/* /appdata && jupyter lab --ip=* --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root --app-dir=/appdata/lab
+CMD cp -R -n /usr/share/jupyter/* /appdata && jupyter lab --ip=* --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root
