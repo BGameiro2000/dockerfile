@@ -4,6 +4,8 @@ FROM archlinux:latest
 # Set maintainer
 LABEL maintainer='BGameiro <projects+docker@bgameiro.me>'
 
+# Temporary fix for 'failed to initialize alpm library (could not find or read directory: /var/lib/pacman/)'
+RUN mkdir -p /var/lib/pacman/
 # Update mirrors and packages. Install xpra, alacritty and openscad.
 RUN pacman --noconfirm -Syyu xpra alacritty openscad
 
