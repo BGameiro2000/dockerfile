@@ -5,7 +5,32 @@ FROM archlinux:latest
 LABEL maintainer='BGameiro <projects+docker@bgameiro.me>'
 
 # Update mirrors and packages. Install jupyterlab
-RUN pacman --noconfirm -Syyu python-pip jupyterlab
+RUN pacman --noconfirm -Syyu \
+                              # Jupyter
+                              jupyterlab \
+                              python-ipykernel \
+                              # PyData
+                              python-scipy \
+                              python-pandas \
+                              python-numpy \
+                              python-matplotlib \
+                              python-scikit-learn \
+                              python-pytorch \
+                              python-dask \
+                              python-xarray \
+                              python-distributed \
+                              # Python Physics
+                              python-mplhep \
+                              # Python helpers
+                              python-pyarrow \
+                              python-tqdm \
+                              # ROOT
+                              root \
+                              python-uproot
+                              
+RUN pip install --user \
+                              jupyterlab-visualpython \
+                              dexplot
 
 ENV JUPYTERLAB_DIR /appdata/lab
 
